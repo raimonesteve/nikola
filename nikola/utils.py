@@ -45,7 +45,7 @@ except ImportError:
     pass
 
 import lxml.html
-import lxml.html.cleaner
+import lxml.html.clean
 import pytz
 
 
@@ -272,9 +272,9 @@ def copy_tree(src, dst, link_cutoff=None):
 def _clean_html(html):
     """Clean HTML as suggested in http://feedvalidator.org/docs/warning/SecurityRisk.html"""
     document = lxml.html.fromstring(html)
-    cleaner = lxml.html.cleaner.CLean(
+    cleaner = lxml.html.clean.Cleaner(
         remove_tags=[
-            'comment', 'embed', 'link', 'listing', 'meta', 'object', 'plaintext', 'script', 'xmp'],
+            'comment', 'embed', 'link', 'listing', 'meta', 'object', 'plaintext', 'script', 'xmp', 'iframe'],
         kill_tags=['svg'])
     cleaner(document)
     return lxml.html.tostring(document)
