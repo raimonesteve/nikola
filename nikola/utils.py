@@ -271,7 +271,14 @@ def copy_tree(src, dst, link_cutoff=None):
 
 def _clean_html(html):
     """Clean HTML as suggested in http://feedvalidator.org/docs/warning/SecurityRisk.html"""
-    document = lxml.html.fromstring(html)
+    try:
+        document = lxml.html.fromstring(html)
+    except lxml.etree.ParserError as e:
+        # if we don't catch this, it breaks later (Issue #374)
+        if str(e) == "Document is empty":
+            return ""
+        # let other errors raise
+        raise(e)
     cleaner = lxml.html.clean.Cleaner(
         remove_tags=[
             'comment', 'embed', 'link', 'listing', 'meta', 'object', 'plaintext', 'script', 'xmp', 'iframe'],
