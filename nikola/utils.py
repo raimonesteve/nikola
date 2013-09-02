@@ -284,7 +284,7 @@ def _clean_html(html):
             'comment', 'embed', 'link', 'listing', 'meta', 'object', 'plaintext', 'script', 'xmp', 'iframe'],
         kill_tags=['svg'])
     cleaner(document)
-    return lxml.html.tostring(document)
+    return lxml.html.tostring(document, encoding='unicode')
 
 
 def generic_rss_renderer(lang, title, link, description, timeline, output_path,

@@ -19,6 +19,7 @@ import nikola
 import nikola.plugins.command
 import nikola.plugins.command.init
 
+
 @contextmanager
 def cd(path):
     old_dir = os.getcwd()
