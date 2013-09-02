@@ -44,6 +44,8 @@ try:
 except ImportError:
     pass
 
+import lxml.html
+import lxml.html.cleaner
 import pytz
 
 
@@ -267,6 +269,17 @@ def copy_tree(src, dst, link_cutoff=None):
             }
 
 
+def _clean_html(html):
+    """Clean HTML as suggested in http://feedvalidator.org/docs/warning/SecurityRisk.html"""
+    document = lxml.html.fromstring(html)
+    cleaner = lxml.html.cleaner.CLean(
+        remove_tags=[
+            'comment', 'embed', 'link', 'listing', 'meta', 'object', 'plaintext', 'script', 'xmp'],
+        kill_tags=['svg'])
+    cleaner(document)
+    return lxml.html.tostring(document)
+
+
 def generic_rss_renderer(lang, title, link, description, timeline, output_path,
                          rss_teasers, feed_length=10):
     """Takes all necessary data, and renders a RSS feed in output_path."""
@@ -275,7 +288,8 @@ def generic_rss_renderer(lang, title, link, description, timeline, output_path,
         args = {
             'title': post.title(lang),
             'link': post.permalink(lang, absolute=True),
-            'description': post.text(lang, teaser_only=rss_teasers, really_absolute=True),
+            'description': _clean_html(
+                post.text(lang, teaser_only=rss_teasers, really_absolute=True)),
             'guid': post.permalink(lang, absolute=True),
             # PyRSS2Gen's pubDate is GMT time.
             'pubDate': (post.date if post.date.tzinfo is None else

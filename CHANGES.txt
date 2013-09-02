@@ -4,6 +4,7 @@ New in 6.0.0
 Features
 --------
 
+* Strip "dangerous" tags from RSS feeds as suggested by feedvalidator.org (Issue #645)
 * Support for bootswatch in boostrap 2 and 3 (Issue #599)
 * New ADDITIONAL_METADATA option to set extra metadata on all posts.
 * All reStructuredText extensions are now plugins (Issue #621)
