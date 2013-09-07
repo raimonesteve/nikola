@@ -233,11 +233,16 @@ COMPILERS = ${COMPILERS}
 # monokai murphy native pastie perldoc rrt tango trac vim vs
 # CODE_COLOR_SCHEME = 'default'
 
-# If you use 'site-reveal' theme you can select several subthemes
+# If you use the 'bootstrap3' theme without bootswatch, you can use an optional
+# theme for a visually enhanced experience.
+# DO NOT use with bootswatch themes!
+# THEME_BOOTSTRAP3_USE_THEME = False
+
+# If you use the 'site-reveal' theme you can select several subthemes
 # THEME_REVEAL_CONFIG_SUBTHEME = 'sky'
 # You can also use: beige/serif/simple/night/default
 
-# Again, if you use 'site-reveal' theme you can select several transitions
+# Again, if you use the 'site-reveal' theme you can select several transitions
 # between the slides
 # THEME_REVEAL_CONFIG_TRANSITION = 'cube'
 # You can also use: page/concave/linear/none/default

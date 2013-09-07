@@ -11,7 +11,9 @@
     %if use_bundles:
         %if use_cdn:
             <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-            <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" rel="stylesheet">
+            %if bs3theme:
+                <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" rel="stylesheet">
+            % endif
             <link href="/assets/css/all.css" rel="stylesheet" type="text/css">
         %else:
             <link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
@@ -19,10 +21,14 @@
     %else:
         %if use_cdn:
             <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-            <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" rel="stylesheet">
+            %if bs3theme:
+                <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" rel="stylesheet">
+            %endif
         %else:
             <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-            <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+            % if bs3theme:
+                <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+            % endif
         %endif
         <link href="/assets/css/rst.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">

@@ -178,6 +178,7 @@ class Nikola(object):
             'TAG_PATH': 'categories',
             'TAG_PAGES_ARE_INDEXES': False,
             'THEME': 'bootstrap',
+            'THEME_BOOTSTRAP3_USE_THEME': False,
             'THEME_REVEAL_CONFIG_SUBTHEME': 'sky',
             'THEME_REVEAL_CONFIG_TRANSITION': 'cube',
             'THUMBNAIL_SIZE': 180,
@@ -404,6 +405,7 @@ class Nikola(object):
         self._GLOBAL_CONTEXT['disqus_forum'] = self.config.get('COMMENT_SYSTEM_ID')
         self._GLOBAL_CONTEXT['mathjax_config'] = self.config.get(
             'MATHJAX_CONFIG')
+        self._GLOBAL_CONTEXT['bs3theme'] = self.config.get('THEME_BOOTSTRAP3_USE_THEME')
         self._GLOBAL_CONTEXT['subtheme'] = self.config.get('THEME_REVEAL_CONFIG_SUBTHEME')
         self._GLOBAL_CONTEXT['transition'] = self.config.get('THEME_REVEAL_CONFIG_TRANSITION')
         self._GLOBAL_CONTEXT['content_footer'] = self.config.get(
